@@ -26,14 +26,14 @@ func modifySheets(w http.ResponseWriter, r *http.Request) {
 	}
 	accessToken = strings.TrimPrefix(accessToken, "Bearer ")
 
-	// Step 2: Google Drive APIのクライアントを初期化
+	// Google Drive APIのクライアントを初期化
 	driveService, err := createDriveService(accessToken)
 	if err != nil {
 		http.Error(w, "Failed to create Drive service", http.StatusInternalServerError)
 		return
 	}
 
-	// Step 3: 共有シートをコピー
+	// 共有シートをコピー
 	fileId := "1_EbOFp26lePO-ibOmlnep8e-yUpXl_YCU3bl3JqZCyk" // 共有シートのID
 	fr, err := driveService.Files.Get("root").Fields("id").Do()
 	if err != nil {
