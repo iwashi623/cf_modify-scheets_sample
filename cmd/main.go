@@ -3,7 +3,6 @@ package main
 import (
 	"log"
 
-	// 追加
 	_ "github.com/iwashi-623/cf_spreadsheets"
 
 	"github.com/GoogleCloudPlatform/functions-framework-go/funcframework"
