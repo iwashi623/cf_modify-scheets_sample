@@ -1,0 +1,19 @@
+function getAuthUrl() {
+  const authUrl = "https://accounts.google.com/o/oauth2/v2/auth";
+  const clientId =
+    "YOUR_CLIENT_ID";
+  const redirectUri = "https://localhost:3000/oauth2callback";
+  const scopes = [
+    "https://www.googleapis.com/auth/drive",
+    "https://www.googleapis.com/auth/spreadsheets",
+  ];
+
+  //スペース区切りでJOIN
+  const scope = scopes.join("%20");
+
+  //認証コード取得用URL生成
+  const requestUrl = `${authUrl}?scope=${scope}&access_type=offline&prompt=consent&include_granted_scope=true&response_type=code&redirect_uri=${redirectUri}&client_id=${clientId}`;
+  console.log(requestUrl);
+}
+
+getAuthUrl();
