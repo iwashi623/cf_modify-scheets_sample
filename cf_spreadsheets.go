@@ -33,7 +33,7 @@ func modifySheets(w http.ResponseWriter, r *http.Request) {
 	}
 
 	// 共有シートをコピー
-	fileId := "1auCAZM1JpIGoaXq2Rc_PRL75sy8crtlPeQFtjxRZjyw" // 共有シートのID
+	fileId := "1X9W1NHstWuHKjBN0GkcaKzTslAMyRtJPFc0Hc90ltT0" // 共有シートのID
 	// fr, err := driveService.Files.Get("root").Fields("id").Do()
 	// if err != nil {
 	// 	log.Fatalf("Unable to retrieve files: %v", err)
