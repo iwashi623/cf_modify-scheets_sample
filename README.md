@@ -5,5 +5,5 @@ Cloud Function上のGolangコードからスプレッドシートをいじろう
 
 ## Deploy
 ```
- $ gcloud functions deploy iwashita_test --gen2 --entry-point HelloWorld --runtime go122 --trigger-http --region asia-northeast1
+ $ gcloud functions deploy iwashita_test --gen2 --entry-point modifySheets --runtime go122 --trigger-http --region asia-northeast1
 ```

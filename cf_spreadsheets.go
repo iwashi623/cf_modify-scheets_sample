@@ -3,7 +3,6 @@ package cf_spreadsheets
 import (
 	"context"
 	"fmt"
-	"log"
 	"net/http"
 	"strings"
 
@@ -34,14 +33,14 @@ func modifySheets(w http.ResponseWriter, r *http.Request) {
 	}
 
 	// 共有シートをコピー
-	fileId := "1_EbOFp26lePO-ibOmlnep8e-yUpXl_YCU3bl3JqZCyk" // 共有シートのID
-	fr, err := driveService.Files.Get("root").Fields("id").Do()
-	if err != nil {
-		log.Fatalf("Unable to retrieve files: %v", err)
-	}
-	folderId := fr.Id
+	fileId := "1auCAZM1JpIGoaXq2Rc_PRL75sy8crtlPeQFtjxRZjyw" // 共有シートのID
+	// fr, err := driveService.Files.Get("root").Fields("id").Do()
+	// if err != nil {
+	// 	log.Fatalf("Unable to retrieve files: %v", err)
+	// }
+	// folderId := fr.Id
 
-	_, err = copyFile(driveService, fileId, folderId)
+	_, err = copyFile(driveService, fileId)
 	if err != nil {
 		http.Error(w, "Failed to copy the file", http.StatusInternalServerError)
 		return
@@ -58,10 +57,12 @@ func createDriveService(accessToken string) (*drive.Service, error) {
 	return driveService, err
 }
 
-func copyFile(driveService *drive.Service, fileId string, folderId string) (*drive.File, error) {
-	copiedFile := &drive.File{
-		Parents: []string{folderId},
-	}
+func copyFile(driveService *drive.Service, fileId string) (*drive.File, error) {
+	copiedFile := &drive.File{}
 	file, err := driveService.Files.Copy(fileId, copiedFile).Do()
+	if err != nil {
+		fmt.Printf("An error occurred: %v\n", err)
+		return nil, err
+	}
 	return file, err
 }

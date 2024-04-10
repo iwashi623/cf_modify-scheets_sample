@@ -12,5 +12,6 @@
 # below:
 .git
 .gitignore
+sample.js
 
 node_modules
